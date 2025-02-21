@@ -1,5 +1,5 @@
 import User from "../models/user.model.js"
-import mongoose from "mongoose"
+// import mongoose from "mongoose"
 
 export const getUser = async (req, res) => {
 
@@ -17,7 +17,7 @@ export const getUser = async (req, res) => {
 export const signinUser = async (req, res) => {
 
     const user = req.body
-    const existingUser = await collection.findOne({ email: user.email });
+    const existingUser = await User.findOne({ email: user.email });
 
     if (!existingUser){
         return res.status(400).json({message: 'User Does Not Exist'})
@@ -42,7 +42,7 @@ export const signinUser = async (req, res) => {
 export const signupUser = async (req, res) => {
 
     const user = req.body
-    const existingUser = await collection.findOne({ email: user.email });
+    const existingUser = await User.findOne({ email: user.email });
 
     if (existingUser){
         return res.status(400).json({message: 'AUser Already Exists'})
@@ -53,9 +53,9 @@ export const signupUser = async (req, res) => {
     if (user.password.length < 6){
         return res.status(400).json({message: 'Minimum 6 characters in Password'})
     }
-    if (user.email != '--regex--'){
-        return res.status(400).json({message: 'Enter vaild Email Id'})
-    }
+    // if (user.email != 'nirmal@gmail.com'){
+    //     return res.status(400).json({message: 'Enter vaild Email Id'})
+    // }
 
     const newUser = new User(user)
 
