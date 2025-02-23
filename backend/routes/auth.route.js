@@ -13,6 +13,6 @@ authRouter.post("/signin", signinUser)
 
 authRouter.post("/signup", signupUser)
 
-authRouter.get("/signout", signoutUser)
+authRouter.post("/signout", signoutUser)
 
 export default authRouter;

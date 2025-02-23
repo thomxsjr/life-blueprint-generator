@@ -13,12 +13,12 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const __dirname = path.resolve();
 
-// app.use(session({
-// 	secret: process.env.SESSION_SECRET,
-// 	resave: false,
-// 	saveUninitialized: true,
-// 	cookie: { maxAge: 60000 }
-// }));
+app.use(session({
+	secret: process.env.SESSION_SECRET,
+	resave: false,
+	saveUninitialized: true,
+	cookie: { maxAge: 60000 }
+}));
 
 app.use(express.json());
 
