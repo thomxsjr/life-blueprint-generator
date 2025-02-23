@@ -8,6 +8,10 @@ export const getUser = async (req, res) => {
 
     const id = req.params.id
 
+    if(!req.session.user){
+        return res.status(401).json({success: false, message: "Unauthorized"})
+    }
+
     try {
         const user = await User.findById(id)
         res.status(200).json({success: true, data: user})
@@ -36,7 +40,7 @@ export const signinUser = async (req, res) => {
         if(!isPasswordCorrect){
             return res.status(400).json({success: false, message: "Password Incorrect"})
         }
-
+        req.session.user = existingUser;
         res.status(200).json({success: true, data: existingUser})
 
     } catch (error) {
@@ -49,7 +53,13 @@ export const signupUser = async (req, res) => {
 
 	const { name, email, password } = req.body;
     const existingUser = await User.findOne({ email: email });
-
+    const validateEmail = (email) => {
+        return String(email)
+          .toLowerCase()
+          .match(
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+          );
+      };
     
     if (existingUser){
         return res.status(400).json({message: 'AUser Already Exists'})
@@ -60,9 +70,9 @@ export const signupUser = async (req, res) => {
     if (password.length < 6){
         return res.status(400).json({message: 'Minimum 6 characters in Password'})
     }
-    // if (email != 'nirmal@gmail.com'){
-    //     return res.status(400).json({message: 'Enter vaild Email Id'})
-    // }
+    if (!validateEmail(email)){
+        return res.status(400).json({message: 'Invalid Email'})
+    }
 
 	const hashedPassword = await bcrypt.hash(password, 12);
 
@@ -83,11 +93,12 @@ export const signupUser = async (req, res) => {
 
 export const signoutUser = async (req, res) => {
 
-
-    try {
-        // clear session and redirect to welcome page
-    } catch (error) {
-        console.log("Error is signing out User: ", error.message)
-        res.status(500).json({success: false, message: error.message})
-    }
+    req.session.destroy((err) => {
+		if(err) {
+			console.log("Error is signing out User: ", err)
+            res.status(500).json({success: false, message: err})
+		} else {
+			res.status(200).json({success: true, message: "User Signed Out"})
+		}
+	})
 }

@@ -2,6 +2,7 @@ import express from 'express';
 import session from 'express-session';
 import dotenv from 'dotenv';
 import path from "path";
+import connectMongoDBSession from "connect-mongodb-session";
 
 import authRoutes from "./routes/auth.route.js";
 
@@ -12,13 +13,19 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 const __dirname = path.resolve();
-
+const MongoDBSession = connectMongoDBSession(session);
+const MongoDBStore = MongoDBSession({
+	uri: process.env.MONGO_URI,
+	collection: "sessions"
+});
 app.use(session({
 	secret: process.env.SESSION_SECRET,
 	resave: false,
 	saveUninitialized: true,
+	store: MongoDBStore,
 	cookie: { maxAge: 60000 }
 }));
+
 
 app.use(express.json());
 

@@ -9,14 +9,14 @@ const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        signInUserSuccess: (state, action) => {
+        addUser: (state, action) => {
             state.currentUser = action.payload
         },
-        signOutUserSuccess: (state) => {
+        removeUser: (state) => {
             state.currentUser = null
         }
     }
 })
 
-export const { signInUserSuccess, signOutUserSuccess } = userSlice.actions
+export const { addUser, removeUser } = userSlice.actions
 export default userSlice.reducer
