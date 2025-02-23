@@ -1,13 +1,19 @@
-import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Dashboard from './pages/Dashboard';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
+import Welcome from './pages/Welcome';
 
-const App = () => {
+
+export default function App() {
   return (
-    <div>
-      <div className='container bg-red-500'>
-        <h1>Hello tailwindcss v4 and react</h1>
-      </div>
-    </div>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Welcome />} />
+        <Route path='/signin' element={<SignIn />} />
+        <Route path='/signup' element={<SignUp />} />
+        <Route path='/dashboard' element={<Dashboard />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
-
-export default App
