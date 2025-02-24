@@ -3,6 +3,7 @@ import Dashboard from './pages/Dashboard';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Welcome from './pages/Welcome';
+import PageNotFound from "./pages/PageNotFound";
 import PropTypes from "prop-types";
 import { useSelector } from 'react-redux';
 
@@ -37,6 +38,10 @@ export default function App() {
             <Dashboard />
           </ProtectedRoute>
         } />
+        <Route
+                    path="*"
+                    element={<PageNotFound />}
+                />
       </Routes>
     </BrowserRouter>
   );
