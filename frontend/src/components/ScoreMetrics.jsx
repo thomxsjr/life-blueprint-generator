@@ -32,7 +32,7 @@ const ScoreMetrics = () => {
     return (
         <section className="px-4 py-4">
             <div className=" text-center">
-                <div className="mt-12">
+                <div className="mt-6">
                     <ul className="place-items-center max-w-7xl mx-auto grid gap-y-5 gap-x-10 grid-cols-1 md:grid-cols-3">
                         {features.map((item, idx) => (
                             

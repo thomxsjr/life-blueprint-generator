@@ -2,6 +2,9 @@
 import Header from '../components/Header'
 import ScoreMetrics from '../components/ScoreMetrics'
 import BGGradient from '../components/BGGradient'
+import MultiLineChart from '../components/MultiLineChart'
+import RadarScoreChart from '../components/RadarScoreChart'
+
 const Dashboard = () => {
   // const { currentUser } = useSelector((state) => state.user)
 
@@ -23,6 +26,12 @@ const Dashboard = () => {
       </div>
       
         <ScoreMetrics />
+
+
+        <div className='max-w-7xl mx-auto p-4'>
+        <MultiLineChart />
+        <RadarScoreChart />
+        </div>
 
 
     </>
