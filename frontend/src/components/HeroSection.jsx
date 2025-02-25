@@ -16,7 +16,7 @@ const HeroSection = () => {
 
   return (
   <div className="bg-white">
-      <header className="absolute inset-x-0 top-0 z-50">
+      <header className="sticky inset-x-0 top-0 z-50 bg-white/50 backdrop-blur-lg shadow-sm border-b border-white/10">
         <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
           <div className="flex lg:flex-1">
             <a href="#" className="-m-1.5 p-1.5">
@@ -51,9 +51,9 @@ const HeroSection = () => {
             </a>
           </div>
         </nav>
-        <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
+        <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden ">
           <div className="fixed inset-0 z-50" />
-          <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+          <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white/50 backdrop-blur-lg shadow-sm border-b border-white/10 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-between">
               <a href="#" className="-m-1.5 p-1.5">
                 <span className="sr-only">Your Company</span>
