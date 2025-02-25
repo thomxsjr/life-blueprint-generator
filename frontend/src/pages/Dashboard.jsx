@@ -16,7 +16,7 @@ const Dashboard = () => {
       <Header/>
       
       <div className="relative isolate px-6 pt-10 lg:px-8">
-        <h1 className="text-2xl font-bold tracking-tight text-balance text-gray-700 sm:text-5xl">
+        <h1 className="text-4xl font-bold tracking-tight text-balance text-gray-700 sm:text-5xl">
               {currentUser.name}'s Dashboard
         </h1>
       </div>
