@@ -9,6 +9,7 @@ const Dashboard = () => {
   return (
     <>
       <BGGradient offset={0}/>
+      <BGGradient offset={500}/>
       <BGGradient offset={1000}/>
 
       
@@ -21,6 +22,8 @@ const Dashboard = () => {
       </div>
 
       <ScoreMetrics />
+
+
 
 
     </>

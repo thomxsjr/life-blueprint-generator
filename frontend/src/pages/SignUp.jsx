@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import BGGradient from '../components/BGGradient';
 
 export default function SignUp() {
   const [formData, setFormData] = useState({});
@@ -39,6 +40,8 @@ export default function SignUp() {
     }
   };
   return (
+    <>
+    <BGGradient offset={-200}/>
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
     <div className="sm:mx-auto sm:w-full sm:max-w-sm">
       <img
@@ -127,5 +130,6 @@ export default function SignUp() {
       </div>
     </div>
     </div>
+    </>
       );
     }
