@@ -22,7 +22,7 @@ const HeroSection = () => {
               <span className="sr-only">Your Company</span>
               <img
                 alt=""
-                src="https://tailwindui.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
+                src="/images/logo.png"
                 className="h-8 w-auto"
               />
             </a>
@@ -58,7 +58,7 @@ const HeroSection = () => {
                 <span className="sr-only">Your Company</span>
                 <img
                   alt=""
-                  src="https://tailwindui.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
+                  src="/images/logo.png"
                   className="h-8 w-auto"
                 />
               </a>
