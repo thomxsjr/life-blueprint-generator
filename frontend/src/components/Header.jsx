@@ -54,7 +54,7 @@ export default function Header() {
 
 
   return (
-    <header className="">
+    <header className="sticky top-0 z-50 bg-white/50 backdrop-blur-lg shadow-sm border-b border-white/10">
       <nav aria-label="Global" className="mx-auto flex items-center justify-between p-6 lg:px-8">
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
@@ -79,8 +79,8 @@ export default function Header() {
         <PopoverGroup className="hidden lg:flex lg:gap-x-12">
           
 
-          <a href="#" className="text-sm/6 font-semibold text-gray-900">
-            Features
+          <a href="#stats" className="text-sm/6 font-semibold text-gray-900">
+            Stats
           </a>
           <a href="#" className="text-sm/6 font-semibold text-gray-900">
             Marketplace
@@ -168,10 +168,10 @@ export default function Header() {
               <div className="space-y-2 py-6">
                 
                 <a
-                  href="#"
+                  href="#stats"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                 >
-                  Features
+                  Stats
                 </a>
                 <a
                   href="#"

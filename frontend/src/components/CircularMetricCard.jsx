@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 
 const CircularMetricCard = ({ title, value }) => {
   return (
-    <div className="metric-card font-bold">
-      <div className="relative w-62 h-62 mb-6 md:w-42 md:h-42">
+    <div className="font-bold">
+      <div className="relative lg:w-62 lg:h-62 mb-6 md:w-42 md:h-42 w-42 h-42">
         <CircularProgressbar
           value={value}
           text={`${value}`}
           styles={buildStyles({
             textSize: '1.25rem',
-            pathColor: '#2196F3',
+            pathColor: '#3949AB',
             textColor: '#4a5568',
             trailColor: 'rgba(100, 181, 246, 0.25)',
             pathTransition: 'stroke-dashoffset 0.5s ease 0s',
