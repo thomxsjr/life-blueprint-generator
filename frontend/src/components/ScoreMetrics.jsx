@@ -36,7 +36,7 @@ const ScoreMetrics = () => {
                     <ul className="grid gap-y-20 gap-x-10 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3">
                         {features.map((item, idx) => (
                             
-                            <li key={idx} className="bg-white rounded-4xl p-6 flex flex-col items-center text-center hover:translate-y-[-4px] transition-all duration-300 shadow-[0_10px_20px_rgba(221,147,234,_0.3)]">
+                            <li key={idx} className="bg-white border border-gray-300 rounded-4xl p-6 flex flex-col items-center text-center hover:translate-y-[-4px] transition-all duration-300">
                                 <div className="flex items-center justify-center">
                                     {item.metric}
                                 </div>
