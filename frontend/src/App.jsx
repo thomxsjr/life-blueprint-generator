@@ -14,9 +14,9 @@ function ProtectedRoute({ children }) {
   if (currentUser === undefined) {
     return <Navigate to="/signin" replace />;
   }
-    if(currentUser === null){
-      return <Navigate to="/signin" replace />;
-    }
+  if(currentUser === null){
+    return <Navigate to="/signin" replace />;
+  }
 
   return <>{children}</>;
 }
@@ -25,12 +25,30 @@ ProtectedRoute.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
+function RedirectRoute({ children }) {
+  const { currentUser } = useSelector((state) => state.user);
+
+  if(currentUser != null){
+    return <Navigate to="/dashboard" replace />;
+  }
+
+  return <>{children}</>;
+}
+
+RedirectRoute.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Welcome />} />
+        <Route path='/' element={
+          <RedirectRoute>
+            <Welcome />
+          </RedirectRoute>
+        } />
         <Route path='/signin' element={<SignIn />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/dashboard' element={
