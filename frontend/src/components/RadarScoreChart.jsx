@@ -32,28 +32,28 @@ const chartConfig = {
 
 export default function RadarScoreChart() {
   return (
-    <Card className="bg-white border-gray-300 rounded-4xl mt-12">
-      <CardHeader className="items-center">
+    <Card className="w-full h-full border-none shadow-none flex">
+      <CardHeader className="flex-1">
         <CardTitle>Score Distribution</CardTitle>
         <CardDescription>
           Showing Latest Calculated Scores
         </CardDescription>
       </CardHeader>
-      <CardContent className="pb-0">
+      <CardContent className="p-2 flex-2 justify-center items-center">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square max-h-[250px]"
+          className="mx-auto"
         >
           <RadarChart data={chartData}>
             <ChartTooltip className="bg-white border-gray-300" cursor={false} content={<ChartTooltipContent />} />
-            <PolarGrid stroke="gray" strokeWidth={1} />
+            <PolarGrid stroke="gray" strokeWidth={0.70} />
             <PolarAngleAxis dataKey="sector" tick={{ fill: "black", fontSize: 14, fontWeight: "semibold" }} />
             <Radar
               dataKey="score"
               fill="var(--color-score)"
               fillOpacity={0.6}
               dot={{
-                r: 4,
+                r: 3,
                 fillOpacity: 1,
               }}
             />

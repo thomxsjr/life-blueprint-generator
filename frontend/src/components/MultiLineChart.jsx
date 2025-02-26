@@ -43,7 +43,7 @@ const chartConfig = {
 
 export default function MultiLineChart() {
   return (
-    <Card className="bg-white border-gray-300 rounded-4xl my-6">
+    <Card className="w-full border-none shadow-none">
       <CardHeader>
         <CardTitle>Score History</CardTitle>
         <CardDescription>January 2024 - June 2024</CardDescription>
@@ -54,7 +54,7 @@ export default function MultiLineChart() {
             data={chartData}
             margin={{ left: 12, right: 12 }}
           >
-            <CartesianGrid vertical={false} />
+            <CartesianGrid horizontal={false} stroke="gray" strokeWidth={0.35}  vertical={true} />
             <XAxis
               dataKey="month"
               tickLine={false}
@@ -62,7 +62,7 @@ export default function MultiLineChart() {
               tickMargin={8}
               tickFormatter={(value) => value.slice(0, 3)}
             />
-            <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
+            <ChartTooltip className="bg-white border-gray-300" cursor={false} content={<ChartTooltipContent />} />
             <Line
               dataKey="career"
               type="monotone"
