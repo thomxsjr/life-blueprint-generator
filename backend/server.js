@@ -4,7 +4,8 @@ import dotenv from 'dotenv';
 import path from "path";
 import connectMongoDBSession from "connect-mongodb-session";
 
-import authRoutes from "./routes/auth.route.js";
+import authRouter from "./routes/auth.route.js";
+import userMetricRouter from "./routes/userMetric.route.js"
 
 import { connectDB } from "./config/db.js";
 
@@ -28,7 +29,8 @@ app.use(session({
 
 app.use(express.json());
 
-app.use("/api/auth", authRoutes);
+app.use("/api/auth", authRouter);
+app.use("/api/user-metrics", userMetricRouter)
 
 
 if(process.env.NODE_ENV === "production") {
