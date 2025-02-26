@@ -1,9 +1,9 @@
 // import { useSelector } from 'react-redux'
 import Header from '../components/Header'
-import ScoreMetrics from '../components/ScoreMetrics'
+import ScoreMetrics from '../components/graphs/ScoreMetrics'
 import BGGradient from '../components/BGGradient'
-import MultiLineChart from '../components/MultiLineChart'
-import RadarScoreChart from '../components/RadarScoreChart'
+import MultiLineChart from '../components/graphs/MultiLineChart'
+import RadarScoreChart from '../components/graphs/RadarScoreChart'
 
 const Dashboard = () => {
   // const { currentUser } = useSelector((state) => state.user)
