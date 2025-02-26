@@ -28,7 +28,7 @@ const Dashboard = () => {
         <ScoreMetrics />
 
 
-        <div className='max-w-7xl mx-auto py-4 grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4'>
+        <div className='max-w-7xl mx-auto px-4 py-4 grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4'>
           <div className="bg-white border border-gray-300 rounded-4xl my-6 p-4 flex"><MultiLineChart /></div>
           <div className="bg-white border border-gray-300 rounded-4xl my-6 p-4 flex "><RadarScoreChart /></div>
         </div>
