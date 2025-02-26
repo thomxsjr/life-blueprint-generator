@@ -83,10 +83,10 @@ export default function Header() {
             Stats
           </a>
           <a href="#" className="text-sm/6 font-semibold text-gray-900">
-            Marketplace
+            Predictions
           </a>
           <a href="#" className="text-sm/6 font-semibold text-gray-900">
-            Company
+            Plan
           </a>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Popover className="relative">
@@ -177,13 +177,13 @@ export default function Header() {
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                 >
-                  Marketplace
+                  Predictions
                 </a>
                 <a
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                 >
-                  Company
+                  Plan
                 </a>
               </div>
               <Disclosure as="div" className="-mx-3">
