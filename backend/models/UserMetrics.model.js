@@ -16,7 +16,7 @@ const UserMetricsSchema = new mongoose.Schema(
                 type: String,
                 required: true,
             },
-            disabilities: {
+            isdisable: {
                 type: Boolean,
                 required: true,
             },

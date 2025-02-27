@@ -55,11 +55,9 @@ export default function MultiStepForm() {
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             
             {step === 1 &&  <BasicMetrics />}
-
             
             {step === 2 && <CareerMetrics />}
             
-
             {step === 3 && <HealthMetrics />}
 
             {step === 4 && <FinanceMetrics />}
