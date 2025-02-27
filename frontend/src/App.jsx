@@ -27,9 +27,9 @@ ProtectedRoute.propTypes = {
 };
 
 function CheckUserMetricsComplete({ children }) {
-  const { currentUserMetrics } = useSelector((state) => state.userMetrics);
+  const currentUserMetrics = useSelector((state) => state.userMetrics.currentUserMetrics);
 
-  if (!currentUserMetrics){
+  if (!currentUserMetrics) {
     return <Navigate to="/user-metrics" replace />;
   }
 

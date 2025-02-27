@@ -32,7 +32,7 @@ export default function MultiStepForm() {
   return (
     <>
 
-        <ol className="md:flex items-center w-full space-y-4 md:space-x-8 md:space-y-0">
+        <ol className="flex items-center w-full space-x-8 space-y-0">
       
             {stepper.map((item)=>(
                 <li onClick={() => handleStepperClick(item.step)} key={item.step} id={item.step} className=" flex-1">

@@ -1,22 +1,24 @@
+// userMetricsSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
-
 const initialState = {
-    currentUserMetrics: null,
-}
+  currentUserMetrics: null,
+};
 
 const userMetricsSlice = createSlice({
-    name: 'userMetrics',
-    initialState,
-    reducers: {
-        adduserMetrics: (state, action) => {
-            state.currentUser = action.payload
-        },
-        updateuserMetrics: (state, action) => {
-            state.currentUser = action.payload
-        }
-    }
-})
+  name: 'userMetrics',
+  initialState,
+  reducers: {
 
-export const { adduserMetrics, updateuserMetrics } = userMetricsSlice.actions
-export default userMetricsSlice.reducer
+    setUserMetrics: (state, action) => {
+      state.currentUserMetrics = action.payload;
+    },
+
+    clearUserMetrics: (state) => {
+      state.currentUserMetrics = null;
+    },
+  },
+});
+
+export const { setUserMetrics, clearUserMetrics } = userMetricsSlice.actions;
+export default userMetricsSlice.reducer;
