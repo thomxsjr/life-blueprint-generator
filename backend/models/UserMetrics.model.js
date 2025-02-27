@@ -55,10 +55,10 @@ const UserMetricsSchema = new mongoose.Schema(
                 type: String,
                 required: true,
             },
-            exerciseMinutes: {
-                type: String,
-                required: true,
-            },
+            // exerciseMinutes: {
+            //     type: String,
+            //     required: true,
+            // },
             sleepTime: {
                 type: Number,
                 required: true,

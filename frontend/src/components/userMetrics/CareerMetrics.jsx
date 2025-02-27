@@ -66,7 +66,7 @@ const careerMetrics = () => {
         </div>
 
         <div className="sm:col-span-4">
-            <label htmlFor="salarySatisfaction" className="block text-sm/6 font-medium text-gray-900">
+            <label htmlFor="stressLevel" className="block text-sm/6 font-medium text-gray-900">
             How satisfied are you with your salary on a scale of 1 to 10?
             </label>
             <div className="mt-2">
@@ -75,8 +75,8 @@ const careerMetrics = () => {
                     required
                     min='1'
                     max='10'
-                    id="salarySatisfaction"
-                    name="salarySatisfaction"
+                    id="stressLevel"
+                    name="stressLevel"
                     type="number"
                     className="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
                 />
@@ -84,24 +84,6 @@ const careerMetrics = () => {
             </div>
         </div>
 
-        <div className="sm:col-span-4">
-            <label htmlFor="careerScore" className="block text-sm/6 font-medium text-gray-900">
-            How satisfied are you with your career on a scale of 1 to 10?
-            </label>
-            <div className="mt-2">
-                <div className="flex min-w-0 grow items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
-                <input
-                    required
-                    min='1'
-                    max='10'
-                    id="careerScore"
-                    name="careerScore"
-                    type="number"
-                    className="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
-                />
-                </div>
-            </div>
-        </div> 
     </>
   )
 }

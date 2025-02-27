@@ -17,7 +17,7 @@ const BasicMetrics = () => {
     <>
         <fieldset className="col-span-4">
               <legend className="text-sm/6 font-semibold text-gray-900">What is you Gender?</legend>
-              <div className="mt-6 space-y-6">
+              <div className="mt-6 flex items-center space-x-6">
                 <div className="flex items-center gap-x-3">
                   <input
                     required
@@ -58,7 +58,7 @@ const BasicMetrics = () => {
                   What is your Age?
                 </label>
                 <div className="mt-2">
-                  <div className="flex w-60 items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
+                  <div className="flex min-w-0 grow items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
                     <input
                       required
                       id="age"
@@ -72,7 +72,7 @@ const BasicMetrics = () => {
 
               <fieldset className="col-span-4">
               <legend className="text-sm/6 font-semibold text-gray-900">Do you have any disabilities</legend>
-              <div className="mt-6 space-y-6">
+              <div className="mt-6 flex items-center space-x-6">
                 <div className="flex items-center gap-x-3">
                   <input
                     defaultChecked
