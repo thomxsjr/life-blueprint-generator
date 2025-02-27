@@ -26,19 +26,19 @@ ProtectedRoute.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-function CheckUserMetricsComplete({ children }) {
-  const currentUserMetrics = useSelector((state) => state.userMetrics.currentUserMetrics);
+// function CheckUserMetricsComplete({ children }) {
+//   const currentUserMetrics = useSelector((state) => state.userMetrics.currentUserMetrics);
 
-  if (!currentUserMetrics) {
-    return <Navigate to="/user-metrics" replace />;
-  }
+//   if (!currentUserMetrics) {
+//     return <Navigate to="/user-metrics" replace />;
+//   }
 
-  return <>{children}</>;
-}
+//   return <>{children}</>;
+// }
 
-CheckUserMetricsComplete.propTypes = {
-  children: PropTypes.node.isRequired,
-};
+// CheckUserMetricsComplete.propTypes = {
+//   children: PropTypes.node.isRequired,
+// };
 
 function RedirectRoute({ children }) {
   const { currentUser } = useSelector((state) => state.user);
@@ -68,9 +68,9 @@ export default function App() {
         <Route path='/signup' element={<SignUp />} />
         <Route path='/dashboard' element={
           <ProtectedRoute>
-            <CheckUserMetricsComplete>
+            {/* <CheckUserMetricsComplete> */}
               <Dashboard />
-            </CheckUserMetricsComplete>
+            {/* </CheckUserMetricsComplete> */}
           </ProtectedRoute>
         } />
         <Route path='/user-metrics' element={<UserMetrics />} />

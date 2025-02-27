@@ -84,11 +84,11 @@ const UserMetricsSchema = new mongoose.Schema(
                 type: String,
                 required: true,
             },
-            debt: {
+            monthlyExpenses: {
                 type: String,
                 required: true,
             },
-            monthlyExpenses: {
+            debt: {
                 type: String,
                 required: true,
             },
