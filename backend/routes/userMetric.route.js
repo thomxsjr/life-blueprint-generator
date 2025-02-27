@@ -1,14 +1,14 @@
 import express from "express"
-import { getUserMetrics, createUserMetrics, updateUserMetrics } from '../controllers/UserMetric.controller.js'
+import { getUserMetrics, createUserMetrics, updateUserMetrics } from '../controllers/UserMetrics.controller.js'
 
 
-const userMetricRouter = express.Router()
+const userMetricsRouter = express.Router()
 
 
-userMetricRouter.get("/:email", getUserMetrics)
+userMetricsRouter.get("/:email", getUserMetrics)
 
-userMetricRouter.post("/create", createUserMetrics)
+userMetricsRouter.post("/create", createUserMetrics)
 
-userMetricRouter.post("/update", updateUserMetrics)
+userMetricsRouter.put("/update", updateUserMetrics)
 
-export default userMetricRouter;
+export default userMetricsRouter;

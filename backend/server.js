@@ -5,7 +5,7 @@ import path from "path";
 import connectMongoDBSession from "connect-mongodb-session";
 
 import authRouter from "./routes/auth.route.js";
-import userMetricRouter from "./routes/userMetric.route.js"
+import userMetricsRouter from "./routes/userMetric.route.js"
 
 import { connectDB } from "./config/db.js";
 
@@ -30,7 +30,7 @@ app.use(session({
 app.use(express.json());
 
 app.use("/api/auth", authRouter);
-app.use("/api/user-metrics", userMetricRouter)
+app.use("/api/user-metrics", userMetricsRouter)
 
 
 if(process.env.NODE_ENV === "production") {

@@ -4,6 +4,7 @@ import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Welcome from './pages/Welcome';
 import PageNotFound from "./pages/PageNotFound";
+import UserMetrics from './pages/UserMetrics';
 import PropTypes from "prop-types";
 import { useSelector } from 'react-redux';
 
@@ -22,6 +23,20 @@ function ProtectedRoute({ children }) {
 }
 
 ProtectedRoute.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+function CheckUserMetricsComplete({ children }) {
+  const { currentUserMetrics } = useSelector((state) => state.userMetrics);
+
+  if (!currentUserMetrics){
+    return <Navigate to="/user-metrics" replace />;
+  }
+
+  return <>{children}</>;
+}
+
+CheckUserMetricsComplete.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
@@ -53,13 +68,13 @@ export default function App() {
         <Route path='/signup' element={<SignUp />} />
         <Route path='/dashboard' element={
           <ProtectedRoute>
-            <Dashboard />
+            <CheckUserMetricsComplete>
+              <Dashboard />
+            </CheckUserMetricsComplete>
           </ProtectedRoute>
         } />
-        <Route
-                    path="*"
-                    element={<PageNotFound />}
-                />
+        <Route path='/user-metrics' element={<UserMetrics />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
   );

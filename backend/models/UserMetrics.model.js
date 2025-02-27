@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const UserMetricSchema = new mongoose.Schema(
+const UserMetricsSchema = new mongoose.Schema(
     {
         email: {
             type: String,
@@ -98,7 +98,6 @@ const UserMetricSchema = new mongoose.Schema(
             },
             financeScore: {
                 type: String,
-                required: true,
             },
         }
 
@@ -108,6 +107,6 @@ const UserMetricSchema = new mongoose.Schema(
     }
 );
 
-const UserMetric = mongoose.model("UserMetric", UserMetricSchema);
+const UserMetrics = mongoose.model("UserMetric", UserMetricsSchema);
 
-export default UserMetric;
+export default UserMetrics;
