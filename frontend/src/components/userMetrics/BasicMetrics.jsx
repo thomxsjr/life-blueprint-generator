@@ -16,10 +16,11 @@ const BasicMetrics = () => {
   return (
     <>
         <fieldset className="col-span-4">
-              <legend className="text-sm/6 font-semibold text-gray-900">Gender</legend>
+              <legend className="text-sm/6 font-semibold text-gray-900">What is you Gender?</legend>
               <div className="mt-6 space-y-6">
                 <div className="flex items-center gap-x-3">
                   <input
+                    required
                     defaultChecked
                     id="female"
                     name="female"
@@ -35,6 +36,7 @@ const BasicMetrics = () => {
                 </div>
                 <div className="flex items-center gap-x-3">
                   <input
+                    required
                     id="male"
                     name="male"
                     type="radio"
@@ -53,11 +55,12 @@ const BasicMetrics = () => {
 
                 <div className="sm:col-span-4">
                 <label htmlFor="age" className="block text-sm/6 font-medium text-gray-900">
-                  Age
+                  What is your Age?
                 </label>
                 <div className="mt-2">
-                  <div className="flex w-20 items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
+                  <div className="flex w-60 items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
                     <input
+                      required
                       id="age"
                       name="age"
                       type="number"
@@ -68,11 +71,12 @@ const BasicMetrics = () => {
               </div>
 
               <fieldset className="col-span-4">
-              <legend className="text-sm/6 font-semibold text-gray-900">Have Disabilities</legend>
+              <legend className="text-sm/6 font-semibold text-gray-900">Do you have any disabilities</legend>
               <div className="mt-6 space-y-6">
                 <div className="flex items-center gap-x-3">
                   <input
                     defaultChecked
+                    required
                     id="true"
                     name="true"
                     type="radio"
@@ -87,6 +91,7 @@ const BasicMetrics = () => {
                 </div>
                 <div className="flex items-center gap-x-3">
                   <input
+                    required
                     id="false"
                     name="false"
                     value={false}
