@@ -6,7 +6,7 @@ const authRouter = express.Router()
 
 authRouter.get('/check-auth', getAuth)
 
-authRouter.get("/:id", getUser)
+authRouter.get("/details/:id", getUser)
 
 authRouter.post("/signin", signinUser)
 

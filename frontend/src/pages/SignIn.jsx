@@ -2,9 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import BGGradient from '../components/BGGradient';
-import {
-  addUser,
-} from '../redux/user/userSlice';
+import { addUser } from '../redux/user/userSlice';
+import { setUserMetrics } from '@/redux/userMetrics/userMetricsSlice';
 
 export default function SignIn() {
   const [formData, setFormData] = useState({});
@@ -12,12 +11,16 @@ export default function SignIn() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
+
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.id]: e.target.value,
     });
   };
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -29,21 +32,43 @@ export default function SignIn() {
         },
         body: JSON.stringify(formData),
       });
-      const data = await res.json();
-      console.log(data);
-      setLoading(false);
+      const userData = await res.json();
       
-      if (data.success === false) {
-        setError(data.message);
+      if (userData.success === false) {
+        setError(userData.message);
+        setLoading(false);
+
       } else {
-        dispatch(addUser(data.data));
+
+        dispatch(addUser(userData.data));
+        await getUserMetrics(userData.data.email)
+        setLoading(false);
         navigate('/dashboard');
       }
 
     } catch (error) {
         console.log(error);
+        setLoading(false);
     }
   };
+
+
+  const getUserMetrics = async (email) => {
+    try {
+      const res = await fetch(`/api/user-metrics/details/${email}`);
+      const userMetricsData = await res.json();
+
+      if (!userMetricsData.success) {
+        setError(userMetricsData.message);
+        return;
+      }
+      dispatch(setUserMetrics(userMetricsData.data));
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
+
   return (
     <>
       <BGGradient offset={-200}/>
