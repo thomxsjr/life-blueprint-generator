@@ -12,11 +12,8 @@ import { useSelector } from 'react-redux';
 function ProtectedRoute({ children }) {
   const { currentUser } = useSelector((state) => state.user);
 
-  if (currentUser === undefined) {
-    return <Navigate to="/signin" replace />;
-  }
-  if(currentUser === null){
-    return <Navigate to="/signin" replace />;
+  if (currentUser === undefined || currentUser === null) {
+    return <Navigate to="/signin" replace />
   }
 
   return <>{children}</>;
@@ -27,9 +24,14 @@ ProtectedRoute.propTypes = {
 };
 
 function CheckUserMetricsComplete({ children }) {
-  const currentUserMetrics = useSelector((state) => state.userMetrics.currentUserMetrics);
+  const { currentUser } = useSelector((state) => state.user)
+  const { currentUserMetrics } = useSelector((state) => state.userMetrics);
 
-  if (!currentUserMetrics) {
+  if (currentUser === undefined || currentUser === null) {
+    return <Navigate to="/signin" replace />
+  }
+
+  if (currentUserMetrics === null || currentUserMetrics === undefined) {
     return <Navigate to="/user-metrics" replace />;
   }
 
@@ -73,7 +75,11 @@ export default function App() {
             </CheckUserMetricsComplete>
           </ProtectedRoute>
         } />
-        <Route path='/user-metrics' element={<UserMetrics />} />
+        <Route path='/user-metrics' element={
+          <ProtectedRoute>
+            <UserMetrics />
+          </ProtectedRoute>
+          } />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>

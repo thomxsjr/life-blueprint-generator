@@ -1,6 +1,7 @@
 import express from 'express';
 import session from 'express-session';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import path from "path";
 import connectMongoDBSession from "connect-mongodb-session";
 
@@ -24,9 +25,15 @@ app.use(session({
 	resave: false,
 	saveUninitialized: true,
 	store: MongoDBStore,
+	cookie:{
+		maxAge: 1000 * 60 * 60 * 24 * 2
+	}
 }));
 
-
+app.use(cors({
+	origin: 'http://localhost:5173',
+	credentials: true
+  }));
 app.use(express.json());
 
 app.use("/api/auth", authRouter);

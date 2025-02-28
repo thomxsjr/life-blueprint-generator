@@ -29,11 +29,12 @@ export default function SignUp() {
       if (data.success === false) {
         setLoading(false);
         setError(data.message);
-        return;
+      } else {
+        setLoading(false);
+        setError(null);
+        navigate('/signin');
       }
-      setLoading(false);
-      setError(null);
-      navigate('/signin');
+
     } catch (error) {
       setLoading(false);
       setError(error.message);
@@ -50,7 +51,7 @@ export default function SignUp() {
         className="mx-auto h-10 w-auto"
       />
       <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
-        Sign in to your account
+        Sign up a new account
       </h2>
     </div>
     
@@ -114,7 +115,7 @@ export default function SignUp() {
             type="submit"
             className="cursor-pointer flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
-            {loading ? 'Loading...' : 'Sign In'}
+            {loading ? 'Loading...' : 'Sign Up'}
           </button>
         </div>
       </form>

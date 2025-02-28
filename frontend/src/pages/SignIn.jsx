@@ -32,12 +32,14 @@ export default function SignIn() {
       const data = await res.json();
       console.log(data);
       setLoading(false);
+      
       if (data.success === false) {
         setError(data.message);
-        return;
+      } else {
+        dispatch(addUser(data.data));
+        navigate('/dashboard');
       }
-      dispatch(addUser(data.data));
-      navigate('/dashboard');
+
     } catch (error) {
         console.log(error);
     }
