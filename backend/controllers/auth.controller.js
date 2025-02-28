@@ -62,16 +62,16 @@ export const signupUser = async (req, res) => {
       };
     
     if (existingUser){
-        return res.status(400).json({message: 'AUser Already Exists'})
+        return res.status(400).json({sucess:false, message: 'AUser Already Exists'})
     }
     if (!name || !email || !password){
-        return res.status(400).json({message: 'All Fields Required'})
+        return res.status(400).json({sucess:false, message: 'All Fields Required'})
     }
     if (password.length < 6){
-        return res.status(400).json({message: 'Minimum 6 characters in Password'})
+        return res.status(400).json({sucess:false, message: 'Minimum 6 characters in Password'})
     }
     if (!validateEmail(email)){
-        return res.status(400).json({message: 'Invalid Email'})
+        return res.status(400).json({sucess:false, message: 'Invalid Email'})
     }
 
 	const hashedPassword = await bcrypt.hash(password, 12);

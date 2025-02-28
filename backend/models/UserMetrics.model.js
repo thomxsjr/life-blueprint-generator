@@ -16,7 +16,7 @@ const UserMetricsSchema = new mongoose.Schema(
                 type: String,
                 required: true,
             },
-            isdisable: {
+            isDisabled: {
                 type: Boolean,
                 required: true,
             },
@@ -51,7 +51,7 @@ const UserMetricsSchema = new mongoose.Schema(
                 type: String,
                 required: true,
             },
-            medicalCondition: {
+            medicalConditions: {
                 type: String,
                 required: true,
             },
@@ -67,7 +67,7 @@ const UserMetricsSchema = new mongoose.Schema(
                 type: Number,
                 required: true,
             },
-            DietType: {
+            dietType: {
                 type: String,
                 required: true,
             },
