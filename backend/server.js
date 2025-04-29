@@ -8,6 +8,7 @@ import OpenAI from "openai";
 
 import authRouter from "./routes/auth.route.js";
 import userMetricsRouter from "./routes/userMetric.route.js"
+import mlModelsRouter from "./routes/mlModels.route.js"
 
 import { connectDB } from "./config/db.js";
 
