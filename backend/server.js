@@ -39,6 +39,7 @@ app.use(express.json());
 
 app.use("/api/auth", authRouter);
 app.use("/api/user-metrics", userMetricsRouter)
+app.use("/api/ml", mlModelsRouter)
 
 
 if(process.env.NODE_ENV === "production") {
