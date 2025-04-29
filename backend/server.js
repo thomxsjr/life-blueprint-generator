@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import path from "path";
 import connectMongoDBSession from "connect-mongodb-session";
+import OpenAI from "openai";
 
 import authRouter from "./routes/auth.route.js";
 import userMetricsRouter from "./routes/userMetric.route.js"
