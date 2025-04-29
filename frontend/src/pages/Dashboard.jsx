@@ -13,6 +13,21 @@ const Dashboard = () => {
   const { currentUserMetrics } = useSelector((state) => state.userMetrics)
   const [data, setData] = useState('')
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+
+  console.log(currentUserMetrics);
+
+  const formData = {
+    "age": currentUserMetrics.basicInfo.age,
+    "salary": currentUserMetrics.financeInfo.salary,
+    "savings": currentUserMetrics.financeInfo.savings,
+    "debt": currentUserMetrics.financeInfo.debt,
+    "stress": currentUserMetrics.healthInfo.stressLevel,
+    "health_satisfaction": currentUserMetrics.healthInfo.healthStatus,
+    "career_satisfaction": currentUserMetrics.careerInfo.salarySatisfaction,
+    "finance_satisfaction": currentUserMetrics.financeInfo.salarySatisfaction,
+  }
+
 
   const handleGenreatePlan = async (e) => {
     e.preventDefault();
@@ -23,20 +38,17 @@ const Dashboard = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(formData)
       });
-      const userData = await res.json();
+      const mlData = await res.json();
       
-      if (userData.success === false) {
-        setError(userData.message);
+      if (mlData.success === false) {
+        setError(mlData.message);
         setLoading(false);
   
       } else {
-  
-        dispatch(addUser(userData.data));
-        await getUserMetrics(userData.data.email)
+        setData(mlData.data);
         setLoading(false);
-        navigate('/dashboard');
       }
   
     } catch (error) {
@@ -84,6 +96,7 @@ const Dashboard = () => {
               {loading ? 'Loading...' : 'Generate Plan'}
             </button>}
           </div>
+          {error && <div className="text-red-500 text-center mt-4">{error}</div>}
       </div>
 
 

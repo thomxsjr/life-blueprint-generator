@@ -1,13 +1,31 @@
 import OpenAI from "openai";
-
+import fetch from 'node-fetch';
 
 export const lifeBlueprintGenerate = async (req, res) => {
 
-    // const { prompt } = req.body;
-    const tprompt = {
-        "ppo_plan": "[{\"Year\":2025,\"Age\":30.000000298,\"Salary\":440692.006563738,\"Savings\":305784.0003264248,\"Debt\":0.0,\"Stress\":10.0,\"Health_Satisfaction\":10.0,\"Career_Satisfaction\":7.0000001788,\"Financial_Satisfaction\":10.0,\"Action\":\"Focus Health\",\"Reward\":0.0},{\"Year\":2026,\"Age\":30.000000298,\"Salary\":440692.006563738,\"Savings\":305784.0003264248,\"Debt\":0.0,\"Stress\":10.0,\"Health_Satisfaction\":10.0,\"Career_Satisfaction\":7.0000001788,\"Financial_Satisfaction\":10.0,\"Action\":\"Focus Health\",\"Reward\":0.0},{\"Year\":2027,\"Age\":30.000000298,\"Salary\":440692.006563738,\"Savings\":305784.0003264248,\"Debt\":0.0,\"Stress\":10.0,\"Health_Satisfaction\":10.0,\"Career_Satisfaction\":7.0000001788,\"Financial_Satisfaction\":10.0,\"Action\":\"Focus Health\",\"Reward\":0.0},{\"Year\":2028,\"Age\":30.000000298,\"Salary\":440692.006563738,\"Savings\":305784.0003264248,\"Debt\":0.0,\"Stress\":10.0,\"Health_Satisfaction\":10.0,\"Career_Satisfaction\":7.0000001788,\"Financial_Satisfaction\":10.0,\"Action\":\"Focus Health\",\"Reward\":0.0},{\"Year\":2029,\"Age\":30.000000298,\"Salary\":440692.006563738,\"Savings\":305784.0003264248,\"Debt\":0.0,\"Stress\":10.0,\"Health_Satisfaction\":10.0,\"Career_Satisfaction\":7.0000001788,\"Financial_Satisfaction\":10.0,\"Action\":\"Focus Health\",\"Reward\":0.0},{\"Year\":2030,\"Age\":30.000000298,\"Salary\":440692.006563738,\"Savings\":305784.0003264248,\"Debt\":0.0,\"Stress\":10.0,\"Health_Satisfaction\":10.0,\"Career_Satisfaction\":7.0000001788,\"Financial_Satisfaction\":10.0,\"Action\":\"Focus Health\",\"Reward\":0.0},{\"Year\":2031,\"Age\":30.000000298,\"Salary\":440692.006563738,\"Savings\":305784.0003264248,\"Debt\":0.0,\"Stress\":10.0,\"Health_Satisfaction\":10.0,\"Career_Satisfaction\":7.0000001788,\"Financial_Satisfaction\":10.0,\"Action\":\"Focus Health\",\"Reward\":0.0},{\"Year\":2032,\"Age\":30.000000298,\"Salary\":440692.006563738,\"Savings\":305784.0003264248,\"Debt\":0.0,\"Stress\":10.0,\"Health_Satisfaction\":10.0,\"Career_Satisfaction\":7.0000001788,\"Financial_Satisfaction\":10.0,\"Action\":\"Focus Health\",\"Reward\":0.0},{\"Year\":2033,\"Age\":30.000000298,\"Salary\":440692.006563738,\"Savings\":305784.0003264248,\"Debt\":0.0,\"Stress\":10.0,\"Health_Satisfaction\":10.0,\"Career_Satisfaction\":7.0000001788,\"Financial_Satisfaction\":10.0,\"Action\":\"Focus Health\",\"Reward\":0.0},{\"Year\":2034,\"Age\":30.000000298,\"Salary\":440692.006563738,\"Savings\":305784.0003264248,\"Debt\":0.0,\"Stress\":10.0,\"Health_Satisfaction\":10.0,\"Career_Satisfaction\":7.0000001788,\"Financial_Satisfaction\":10.0,\"Action\":\"Focus Health\",\"Reward\":0.0}]",
-        "sac_plan": "[{\"Year\":2025,\"Age\":30.000000298,\"Salary\":440692.006563738,\"Savings\":305784.0003264248,\"Debt\":0.0,\"Stress\":10.0,\"Health_Satisfaction\":10.0,\"Career_Satisfaction\":7.0000001788,\"Financial_Satisfaction\":10.0,\"Action\":\"Exercise 9.7 hrs\/wk, Save 21.7%\/mo\",\"Reward\":0.0},{\"Year\":2026,\"Age\":30.000000298,\"Salary\":440692.006563738,\"Savings\":305784.0003264248,\"Debt\":0.0,\"Stress\":10.0,\"Health_Satisfaction\":10.0,\"Career_Satisfaction\":7.0000001788,\"Financial_Satisfaction\":10.0,\"Action\":\"Exercise 9.7 hrs\/wk, Save 21.7%\/mo\",\"Reward\":0.0},{\"Year\":2027,\"Age\":30.000000298,\"Salary\":440692.006563738,\"Savings\":305784.0003264248,\"Debt\":0.0,\"Stress\":10.0,\"Health_Satisfaction\":10.0,\"Career_Satisfaction\":7.0000001788,\"Financial_Satisfaction\":10.0,\"Action\":\"Exercise 9.7 hrs\/wk, Save 21.7%\/mo\",\"Reward\":0.0},{\"Year\":2028,\"Age\":30.000000298,\"Salary\":440692.006563738,\"Savings\":305784.0003264248,\"Debt\":0.0,\"Stress\":10.0,\"Health_Satisfaction\":10.0,\"Career_Satisfaction\":7.0000001788,\"Financial_Satisfaction\":10.0,\"Action\":\"Exercise 9.7 hrs\/wk, Save 21.7%\/mo\",\"Reward\":0.0},{\"Year\":2029,\"Age\":30.000000298,\"Salary\":440692.006563738,\"Savings\":305784.0003264248,\"Debt\":0.0,\"Stress\":10.0,\"Health_Satisfaction\":10.0,\"Career_Satisfaction\":7.0000001788,\"Financial_Satisfaction\":10.0,\"Action\":\"Exercise 9.7 hrs\/wk, Save 21.7%\/mo\",\"Reward\":0.0},{\"Year\":2030,\"Age\":30.000000298,\"Salary\":440692.006563738,\"Savings\":305784.0003264248,\"Debt\":0.0,\"Stress\":10.0,\"Health_Satisfaction\":10.0,\"Career_Satisfaction\":7.0000001788,\"Financial_Satisfaction\":10.0,\"Action\":\"Exercise 9.7 hrs\/wk, Save 21.7%\/mo\",\"Reward\":0.0},{\"Year\":2031,\"Age\":30.000000298,\"Salary\":440692.006563738,\"Savings\":305784.0003264248,\"Debt\":0.0,\"Stress\":10.0,\"Health_Satisfaction\":10.0,\"Career_Satisfaction\":7.0000001788,\"Financial_Satisfaction\":10.0,\"Action\":\"Exercise 9.7 hrs\/wk, Save 21.7%\/mo\",\"Reward\":0.0},{\"Year\":2032,\"Age\":30.000000298,\"Salary\":440692.006563738,\"Savings\":305784.0003264248,\"Debt\":0.0,\"Stress\":10.0,\"Health_Satisfaction\":10.0,\"Career_Satisfaction\":7.0000001788,\"Financial_Satisfaction\":10.0,\"Action\":\"Exercise 9.7 hrs\/wk, Save 21.7%\/mo\",\"Reward\":0.0},{\"Year\":2033,\"Age\":30.000000298,\"Salary\":440692.006563738,\"Savings\":305784.0003264248,\"Debt\":0.0,\"Stress\":10.0,\"Health_Satisfaction\":10.0,\"Career_Satisfaction\":7.0000001788,\"Financial_Satisfaction\":10.0,\"Action\":\"Exercise 9.7 hrs\/wk, Save 21.7%\/mo\",\"Reward\":0.0},{\"Year\":2034,\"Age\":30.000000298,\"Salary\":440692.006563738,\"Savings\":305784.0003264248,\"Debt\":0.0,\"Stress\":10.0,\"Health_Satisfaction\":10.0,\"Career_Satisfaction\":7.0000001788,\"Financial_Satisfaction\":10.0,\"Action\":\"Exercise 9.7 hrs\/wk, Save 21.7%\/mo\",\"Reward\":0.0}]"
-    }
+  const { age, salary, savings, debt, stress, health_satisfaction, career_satisfaction, finance_satisfaction } = req.body;
+
+  try {
+  const response = await fetch("http://127.0.0.1:5000/life-predict", {
+    method: "POST",
+    body: JSON.stringify({
+      age: age,
+      salary: salary,
+      savings: savings,
+      debt: debt,
+      stress: stress,
+      health_satisfaction: health_satisfaction,
+      career_satisfaction: career_satisfaction,
+      finance_satisfaction: finance_satisfaction,
+    }),
+  })
+
+  const tprompt = await response.json();
+  
+  if (!tprompt || !tprompt.ppo_plan || !tprompt.sac_plan) {
+    return res.status(500).json({ success: false, message: 'Missing plan data from Python backend.' });
+  }
+
     function convertPlanToText(planJsonString, title) {
         const planArray = JSON.parse(planJsonString);
         let output = `\n\n=== ${title} ===\n`;
@@ -32,13 +50,11 @@ export const lifeBlueprintGenerate = async (req, res) => {
     const readablePPO = convertPlanToText(tprompt.ppo_plan, "PPO-Based Plan");
     const readableSAC = convertPlanToText(tprompt.sac_plan, "SAC-Based Plan");
     
-    console.log(readablePPO);
-    console.log(readableSAC);
-
-
-
     const prompt = readablePPO + "\n\n" + readableSAC + "\n\n";
-    console.log(prompt)
+
+
+
+
     const openai = new OpenAI({
         apiKey: process.env.OPENAI_API_KEY,
     });
@@ -105,7 +121,7 @@ export const lifeBlueprintGenerate = async (req, res) => {
               }
             ],
             temperature: 1,
-            max_tokens: 2048,
+            max_tokens: 3000,
             top_p: 1
           });
           
@@ -121,4 +137,7 @@ export const lifeBlueprintGenerate = async (req, res) => {
             message: "Error generating life blueprint",
         });
     }
+  } catch (error) {
+  console.error("Error fetching plan from Python backend:", error);
+}
 }
