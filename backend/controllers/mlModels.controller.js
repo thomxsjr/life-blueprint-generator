@@ -1,3 +1,4 @@
+import OpenAI from "openai";
 
 
 export const lifeBlueprintGenerate = async (req, res) => {
